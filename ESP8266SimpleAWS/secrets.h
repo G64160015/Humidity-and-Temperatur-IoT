@@ -2,8 +2,8 @@
 
 #define SECRET
 
-const char ssid[] = "JAPARI";//wifi name
-const char pass[] = "dibawahkalender";//password wifi
+const char ssid[] = "SHYETAN";//wifi name
+const char pass[] = "estehmanis3999";//password wifi
 
 #define THINGNAME "SensorSuhu1"
 

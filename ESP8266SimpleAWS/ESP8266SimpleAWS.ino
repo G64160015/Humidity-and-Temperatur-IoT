@@ -17,7 +17,7 @@ DHT dht(DHTPin, DHTTYPE);
 
 
 const int MQTT_PORT = 8883;
-const char MQTT_SUB_TOPIC[] = "suhudanhumidity1";//"$aws/things/" THINGNAME "/shadow/update";
+const char MQTT_SUB_TOPIC[] = "suhudanhumidity1";//"$aws/things/" THINGNAME "/shadow/update";//suhudanhumidity1
 const char MQTT_PUB_TOPIC[] = "suhudanhumidity1";//"$aws/things/" THINGNAME "/shadow/update";
 
 #ifdef USE_SUMMER_TIME_DST
@@ -185,9 +185,9 @@ void sendDataSensor(void)
     float t = dht.readTemperature();
     //mengirim string hum & temp to server
     String message = "";
-    message += String(t);
+    message += String(t);//temperatur
     message += ",";
-    message += String(h);   
+    message += String(h);//humidity
     if (!client.publish(MQTT_PUB_TOPIC, message.c_str(), false))
     pubSubErr(client.state());
 }
@@ -237,7 +237,7 @@ void loop()
   else
   {
     client.loop();
-    if (millis() - lastMillis > 5000)//send data every 5 sec
+    if (millis() - lastMillis > 10000)//send data every 5 sec
     {
       lastMillis = millis();
       sendDataSensor();
